@@ -29,8 +29,8 @@ static volatile Word *UART = (volatile Word *) STUART; // base address of the UA
 #define UART_SPR		((volatile Word) UART[7] )
 #define UART_ISR		((volatile Word) UART[8] )  // select the infrared port
 
-#define UART_DLL		((volatile Word) UART[0] )  // UART 라인 상태
-#define UART_DLH           	((volatile Word) UART[1] )  // UART 라인 상태
+#define UART_DLL		((volatile Word) UART[0] )  // UART line status (low)
+#define UART_DLH           	((volatile Word) UART[1] )  // UART line status (high)
 
 //Send the single character to the serial device.
 void SerialOutChar( const char c  ) {
