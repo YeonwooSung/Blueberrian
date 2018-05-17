@@ -3,8 +3,8 @@
  * modified by: Yeonwoo Sung                                             *
  *************************************************************************/
 
-#ifndef _STDIO__HEADER_
-#define _STDIO__HEADER_
+#ifndef BLUEBERRIAN_STDIO__HEADER_
+#define BLUEBERRIAN_STDIO__HEADER_
 
 #include <stdarg.h>
 
@@ -24,7 +24,7 @@ typedef unsigned int BOOL;
 #define FALSE  0
 #define TRUE  -1
 
-#define        NUL        0x00
+#define        NUL        0x00 //The Null pointer
 #define        SOH        0x01
 #define        STX        0x02
 #define        ETX        0x03
@@ -131,4 +131,4 @@ extern int gets(char *s);
 extern int vsscanf(char *s, const char *fmt, va_list args);
 extern int sscanf(char *s, const char *fmt, ...);
 
-#endif //_STDIO_HEADER_
+#endif //BLUEBERRIAN_STDIO_HEADER_

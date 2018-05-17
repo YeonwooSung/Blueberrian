@@ -3,8 +3,8 @@
  * modified by: Yeonwoo Sung                                             *
  *************************************************************************/
 
-#ifndef _STRING_HEADER_
-#define _STRING_HEADER_
+#ifndef BLUEBERRIAN_STRING_HEADER_
+#define BLUEBERRIAN_STRING_HEADER_
 
 extern char * ___strtok;
 extern char * strpbrk(const char *,const char *);
@@ -34,4 +34,4 @@ extern unsigned long strtoul(const char *p, char **out_p, int base);
 extern void UpperStr( char *Str );
 extern void LowerStr( char *Str );
 
-#endif // _STRING_HEADER_
+#endif // BLUEBERRIAN_STRING_HEADER_
