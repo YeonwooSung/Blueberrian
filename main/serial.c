@@ -5,7 +5,7 @@
  ******************************************************/
 
 #include <pxa255.h>
-#include <config.h>
+#include <serial.h>
 #include <time.h>
 #include <stdio.h>
 #include <gpio.h>
