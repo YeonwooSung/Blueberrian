@@ -1,5 +1,5 @@
 /* The routine to call the main function in the ezboot. */
 .globl _ram_entry
 _ram_entry:
-	bl	main	   // C 함수의 main함수를 호출한다.
-	b	_ram_entry // main 함수의 호출이 끝났다면 재 호출한다.
+	bl	main	   // call the main function of the c program
+	b	_ram_entry // when it is finished to call the main funciton, recall it
