@@ -85,7 +85,6 @@ extern unsigned char _ctype[];
 
 #define isascii(c) (((unsigned char)(c))<=0x7f)
 #define toascii(c) (((unsigned char)(c))&0x7f)
-
 static inline unsigned char __tolower(unsigned char c) {
     if (isupper(c))
         c -= 'A'-'a';
