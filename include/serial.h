@@ -6,13 +6,9 @@
 #ifndef BLUEBERRIAN_SERIAL_H
 #define BLUEBERRIAN_SERIAL_H
 
-#ifndef _SERIAL_HEADER_
-#define _SERIAL_HEADER_
-
 // The value that corresponds to each baud rate when using the internal clock of the PXA250.
 
-typedef enum
-{
+typedef enum {
     BAUD_4800    = 192 ,
     BAUD_9600    =  96 ,
     BAUD_19200   =  48 ,

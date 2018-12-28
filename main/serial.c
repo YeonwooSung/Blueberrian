@@ -32,6 +32,62 @@ static volatile Word *UART = (volatile Word *) STUART; // base address of the UA
 #define UART_DLL		((volatile Word) UART[0] )  // UART line status (low)
 #define UART_DLH           	((volatile Word) UART[1] )  // UART line status (high)
 
+
+/**
+ * This function initialise the serial.
+ */
+void SerialInit(eBauds baudrate) {
+    Word Temp;
+
+    volatile Word *ClockEnableRegister = (volatile Word *)CKEN;
+
+    // use the switch statement to select the port
+    switch (Cfg.SeriaNumber) {
+
+        case 0:
+            UART = (volatile Word *)FFUART; // 레지스터 베이스 포인터를 변경한다.
+
+            *ClockEnableRegister |= CKEN_FFUART;
+            set_GPIO_mode(GPIO34_FFRXD_MD);
+            set_GPIO_mode(GPIO39_FFTXD_MD);
+            break;
+
+        case 1:
+            UART = (volatile Word *)BTUART; // 레지스터 베이스 포인터를 변경한다.
+
+            *ClockEnableRegister |= CKEN_BTUART;
+            set_GPIO_mode(GPIO42_BTRXD_MD);
+            set_GPIO_mode(GPIO43_BTTXD_MD);
+            break;
+
+        default:
+            UART = (volatile Word *)STUART; // 레지스터 베이스 포인터를 변경한다.
+
+            *ClockEnableRegister |= CKEN_STUART;
+            set_GPIO_mode(GPIO46_STRXD_MD);
+            set_GPIO_mode(GPIO47_STTXD_MD);
+            break;
+    }
+
+    // Ban all interrupts
+    UART_IER = 0;
+
+    // Organise the FIFO
+    UART_FCR = 7;
+    UART_FCR = 1;
+
+    // Set the baud to "8BIT 1STOP NO PARITY"
+    UART_LCR = (LCR_WLS1 | LCR_WLS0 | LCR_DLAB);
+
+    UART_DLL = baudrate;
+    UART_DLH = 0x00;
+
+    UART_LCR = (LCR_WLS1 | LCR_WLS0);
+
+    // activate the UART
+    UART_IER = IER_UUE;
+}
+
 //Send the single character to the serial device.
 void SerialOutChar( const char c  ) {
     //Waits until the character could be sent.
